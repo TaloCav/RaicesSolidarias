@@ -1,17 +1,86 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 html,body{
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-main{
-    /* background: blue; */
-    background-image: url('/Assets/images/Fondo1.jpg');
+body{
+    background-image: url('images/Fondo\ \(3\).jpg');
+    background-size: 100vw auto;
+    background-size:cover;
+    background-position:center;
 }
+
+main{    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.contenedor1, .contenedor2, .contenedor3, .contenedor4, .contenedor5, .contenedor6{
+ display: flex;
+ width: 100%;
+}
+
+.contenedor1 {
+    /* background-color: aqua; */
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.contenedor1 > article > img{
+    width: 120px; 
+
+}
+
+.contenedor2{
+    /* background-color: bisque; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contenedor3 {
+    /* background-color: rgb(196, 255, 211); */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contenedor4{
+    /* background-color: rgb(14, 228, 199); */
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor5{
+    /* background-color: rgb(82, 9, 82); */
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.contenedor6{
+    /* background-color: rgb(240, 7, 7); */
+    
+}
+
+
+
 
 body{
     display: grid;
-    grid-template-rows: 50px 1fr 40px;
+    grid-template-rows: 60px 1fr 40px;
 }
 
 header{
@@ -24,6 +93,13 @@ footer{
     justify-content: center;
 }
 
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+
 .navbar ul{
     display: flex;
     list-style: none;
@@ -31,11 +107,12 @@ footer{
     margin-right: 20px;
 }
 
-.navbar > ul > li > a{
-    text-decoration: none;
-    padding: 20px;
-    position: relative;
-    color:#ffff;
+.esquinaIzq{
+    display: flex;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 60px;
+    justify-content: start;
 }
 
 .btn{
@@ -58,23 +135,18 @@ footer{
     transition-timing-function: 0.5s;
 }
 
-.esquinaIzq{
-    color: #ffffff;
-    font-size: 180%;
-    display: flex;
-    justify-content: start;
-    margin-top: -50px;
-
+.navbar > ul > li > a{
+    text-decoration: none;
+    padding: 20px;
+    position: relative;
+    color:#ffff;
 }
 
-.contenedor1 {
-    display: flex;
-    background-color: aqua;
-    margin-top: 5px;
-    margin-left: 42%;
-    height: 10%;
-    width: 15%;
-    justify-content: center;
+@media screen and (max-width: 520px){
+    .navbar { 
+        display: none;
+        /* background: red; */
+    }
 }
 
 .imagen_Home{
@@ -82,40 +154,21 @@ footer{
     justify-content: center;
 }
 
-.contenedor2{
-    background-color: bisque;
-    height: 15%;
-    width: 35%;
-    margin-left: 32%;
-}
+
 
 .Texto_Home{
     display: flex;
     justify-content: center;
 }
 
-.contenedor3 {
-    background-color: rgb(196, 255, 211);
-    margin: 1%;
-    height: 20%;
-    width: 41%;
-    margin-left: 29%;
-}
+
 
 .Descripcion{
     display: flex;
     justify-content: center;
 }
 
-.contenedor4{
-    background-color: rgb(14, 228, 199);
-    margin: 1%;
-    height: 7%;
-    display: flex;
-    justify-content: center;
-    width: 10%;
-    margin-left: 850px;
-}
+
 
 .btnAbout{
     background: transparent;
@@ -137,43 +190,31 @@ footer{
     transition-timing-function: 0.5s;
 }
 
-.contedor5{
-    background-color: rgb(82, 9, 82);
-    margin: 1%;
-    height: 16%;
-    display: flex;
-}
 
 .contenido1{
     background: rgb(215, 231, 72);
-    margin-left: 16%;
-    width: 250px;
+    
+    
 }
 
 .contenido2{
     background: rgb(255, 255, 255);
-    margin-left: 5%;
-    width: 250px;
+    
+    
 }
 
 .contenido3{
     background: rgb(25, 0, 134);
-    margin-left: 5%;
-    width: 250px;
+    
+    
 }
 
 .contenido4{
     background: rgb(0, 134, 18);
-    margin-left: 5%;
-    width: 250px;
+    
+    
 }
 
-.contenedor6{
-    background-color: rgb(240, 7, 7);
-    margin: 1%;
-    height: 18%;
-    display: flex;
-}
 
 .contenido5{
     background: rgb(255, 255, 255);
