@@ -15,7 +15,8 @@ public class Rol {
 
     @Column(name = "nombre_rol", nullable = false)
     private NombreRol nombreRol;
-
+    /*
     @ManyToMany(mappedBy = "roles")
     private List<Usuario> usuarios;
+    */
 }

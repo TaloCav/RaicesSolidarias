@@ -35,7 +35,7 @@ public class Usuario {
     @Min(value = 6, message = "La contraseña no puede ser inferior a 6 caracteres.")
     @Max(value = 12, message = "La contraseña no puede ser superior a 12 caracteres.")
     private String contrasenia;
-
+    /*
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "usuario_rol",
@@ -47,4 +47,5 @@ public class Usuario {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "direccion_id", nullable = false)
     private Direccion direccion;
+    */
 }

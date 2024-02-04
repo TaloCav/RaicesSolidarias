@@ -15,26 +15,47 @@ public class ArbolServiceImpl implements ArbolService {
     private final ArbolRepository arbolRepository;
     @Override
     public Arbol registrarArbol(Arbol arbol) {
-        return null;
+        Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbol.getNombreCientifico());
+        if(arbolExiste) {
+            return null;
+        } else {
+            return arbolRepository.save(arbol);
+        }
     }
 
     @Override
     public Arbol buscarArbolPorId(Long id) {
-        return null;
+        Boolean arbolExiste = arbolRepository.existsById(id);
+        if(arbolExiste) {
+            return arbolRepository.findById(id).get();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public List<Arbol> listarArboles() {
-        return null;
+        return arbolRepository.findAll();
     }
 
     @Override
     public Arbol actualizarArbol(Arbol arbol) {
-        return null;
+        Boolean arbolExiste = arbolRepository.existsById(arbol.getId());
+        if (arbolExiste && arbol != null) {
+            return arbolRepository.save(arbol);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public String eliminarArbol(Long id) {
-        return null;
+        Boolean arbolExiste = arbolRepository.existsById(id);
+        if(arbolExiste) {
+            arbolRepository.deleteById(id);
+            return "El árbol ha sido eliminado.";
+        } else {
+            return "El árbol no existe en la base de datos.";
+        }
     }
 }
