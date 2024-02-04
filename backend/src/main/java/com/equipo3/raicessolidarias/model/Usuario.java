@@ -5,9 +5,11 @@ import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Data
+@Table(name = "Usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +35,16 @@ public class Usuario {
     @Min(value = 6, message = "La contraseña no puede ser inferior a 6 caracteres.")
     @Max(value = 12, message = "La contraseña no puede ser superior a 12 caracteres.")
     private String contrasenia;
-    // private Rol rol;
-    // private Direccion direccion;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id")
+    )
+    private List<Rol> roles;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "direccion_id", nullable = false)
+    private Direccion direccion;
 }
