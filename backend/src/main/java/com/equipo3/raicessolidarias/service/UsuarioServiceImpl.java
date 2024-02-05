@@ -18,7 +18,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario registrarUsuario(Usuario usuario) {
         Boolean usuarioExiste = usuarioRepository.existsByEmail(usuario.getEmail());
-        if(usuarioExiste) {
+        int edad = usuario.calcularEdad();
+
+        if(usuarioExiste || edad < 18) {
             return null;
         } else {
             return usuarioRepository.save(usuario);

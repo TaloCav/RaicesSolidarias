@@ -18,7 +18,7 @@ public class UsuarioRestController {
     @PostMapping("/registrar")
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario) {
         Usuario usuarioRegistrado = usuarioService.registrarUsuario(usuario);
-        return new ResponseEntity<>(usuarioRegistrado, HttpStatus.OK);
+        return new ResponseEntity<>(usuarioRegistrado, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

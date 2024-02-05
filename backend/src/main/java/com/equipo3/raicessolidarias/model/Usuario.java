@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Entity
@@ -27,6 +29,9 @@ public class Usuario {
 
     private Genero genero;
 
+    @Column(name = "fecha_de_nacimiento", nullable = false)
+    private LocalDate fechaDeNacimiento;
+
     @Column(unique = true, nullable = false)
     @Min(value = 10, message = "El email no puede ser inferior a 10 caracteres.")
     private String email;
@@ -47,4 +52,15 @@ public class Usuario {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "direccion_id", nullable = false)
     private Direccion direccion;
+
+    public final int calcularEdad() {
+        LocalDate fechaNacimiento = LocalDate.of(fechaDeNacimiento.getYear(), fechaDeNacimiento.getMonth(),
+                fechaDeNacimiento.getDayOfMonth());
+        LocalDate fechaActual = LocalDate.now();
+
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        int edad = periodo.getYears();
+
+        return edad;
+    }
 }

@@ -17,7 +17,7 @@ public class ArbolRestController {
     @PostMapping("/registrar")
     public ResponseEntity<Arbol> registrarArbol(@RequestBody Arbol arbol) {
         Arbol arbolRegistrado = arbolService.registrarArbol(arbol);
-        return new ResponseEntity<>(arbolRegistrado, HttpStatus.OK);
+        return new ResponseEntity<>(arbolRegistrado, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
