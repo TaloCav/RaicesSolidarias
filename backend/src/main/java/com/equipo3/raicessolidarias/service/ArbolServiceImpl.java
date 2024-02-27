@@ -1,7 +1,9 @@
 package com.equipo3.raicessolidarias.service;
 
+import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.model.Arbol;
 import com.equipo3.raicessolidarias.repository.ArbolRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,24 +15,37 @@ import java.util.List;
 @AllArgsConstructor
 public class ArbolServiceImpl implements ArbolService {
     private final ArbolRepository arbolRepository;
+    private final ObjectMapper mapper;
     @Override
-    public Arbol registrarArbol(Arbol arbol) {
-        Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbol.getNombreCientifico());
-        if(arbolExiste) {
+    public ArbolDTO registrarArbol(ArbolDTO arbolDTO) {
+        // Verificar si ya existe un árbol con el mismo nombre científico
+        Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbolDTO.getNombreCientifico());
+
+        if (arbolExiste) {
             return null;
         } else {
-            return arbolRepository.save(arbol);
+
+            Arbol arbolAGuardar = mapper.convertValue(arbolDTO, Arbol.class);
+
+            Arbol arbolGuardado = arbolRepository.save(arbolAGuardar);
+
+
+            return mapper.convertValue(arbolGuardado, ArbolDTO.class);
         }
     }
 
     @Override
     public Arbol buscarArbolPorId(Long id) {
         Boolean arbolExiste = arbolRepository.existsById(id);
-        if(arbolExiste) {
-            return arbolRepository.findById(id).get();
+        if (arbolExiste) {
+            return arbolRepository.findById(id).orElse(null);
         } else {
             return null;
         }
+    }
+    @Override
+    public ArbolDTO buscarArbolPorNombreCientifico(String nombreCientifico) {
+        return null;
     }
 
     @Override
@@ -39,10 +54,21 @@ public class ArbolServiceImpl implements ArbolService {
     }
 
     @Override
-    public Arbol actualizarArbol(Arbol arbol) {
-        Boolean arbolExiste = arbolRepository.existsById(arbol.getId());
-        if (arbolExiste && arbol != null) {
-            return arbolRepository.save(arbol);
+    public ArbolDTO actualizarArbol(ArbolDTO arbolDTO, Long id) {
+        Boolean arbolExiste = arbolRepository.existsById(id);
+
+        if (arbolExiste) {
+
+            Arbol arbolExistente = arbolRepository.findById(id).get();
+
+            arbolExistente.setNombreComun(arbolDTO.getNombreComun());
+            arbolExistente.setNombreCientifico(arbolDTO.getNombreCientifico());
+
+            // Guardar el árbol actualizado en la base de datos
+            Arbol arbolActualizado = arbolRepository.save(arbolExistente);
+
+            // Convertir el árbol actualizado a un DTO de árbol y devolverlo
+            return mapper.convertValue(arbolActualizado, ArbolDTO.class);
         } else {
             return null;
         }

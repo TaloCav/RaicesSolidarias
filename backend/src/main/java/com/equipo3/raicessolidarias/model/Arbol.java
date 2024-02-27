@@ -21,6 +21,8 @@ public class Arbol {
     @Max(value = 30)
     private String nombreCientifico;
 
-    @Column(nullable = false)
-    private Double precio;
+    @ManyToOne
+    @JoinColumn(name = "actividad_id")
+    private Actividad actividadArbol;
+
 }

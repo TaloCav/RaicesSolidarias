@@ -8,6 +8,7 @@ import javax.validation.constraints.Min;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -49,18 +50,14 @@ public class Usuario {
     )
     private List<Rol> roles;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "direccion_id", nullable = false)
-    private Direccion direccion;
 
-    public final int calcularEdad() {
-        LocalDate fechaNacimiento = LocalDate.of(fechaDeNacimiento.getYear(), fechaDeNacimiento.getMonth(),
-                fechaDeNacimiento.getDayOfMonth());
-        LocalDate fechaActual = LocalDate.now();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "usuario_actividad",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "actividad_id")
+    )
+    private Set<Actividad> actividades;
 
-        Period periodo = Period.between(fechaNacimiento, fechaActual);
-        int edad = periodo.getYears();
 
-        return edad;
-    }
 }
