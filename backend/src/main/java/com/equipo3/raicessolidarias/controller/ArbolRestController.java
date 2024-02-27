@@ -1,5 +1,6 @@
 package com.equipo3.raicessolidarias.controller;
 
+import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.model.Arbol;
 import com.equipo3.raicessolidarias.service.ArbolServiceImpl;
 import lombok.AllArgsConstructor;
@@ -15,8 +16,8 @@ import java.util.List;
 public class ArbolRestController {
     private final ArbolServiceImpl arbolService;
     @PostMapping("/registrar")
-    public ResponseEntity<Arbol> registrarArbol(@RequestBody Arbol arbol) {
-        Arbol arbolRegistrado = arbolService.registrarArbol(arbol);
+    public ResponseEntity<ArbolDTO> registrarArbol(@RequestBody ArbolDTO arbol) {
+        ArbolDTO arbolRegistrado = arbolService.registrarArbol(arbol);
         return new ResponseEntity<>(arbolRegistrado, HttpStatus.CREATED);
     }
 
@@ -33,11 +34,16 @@ public class ArbolRestController {
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Arbol> actualizarArbol(@RequestBody Arbol arbol) {
-        Arbol arbolActualizado= arbolService.actualizarArbol(arbol);
-        return new ResponseEntity<>(arbolActualizado, HttpStatus.OK);
-    }
+    public ResponseEntity<ArbolDTO> actualizarArbol(@RequestBody ArbolDTO arbolDTO, @RequestParam Long id) {
+        // Llama al servicio para actualizar el árbol
+        ArbolDTO arbolActualizadoDTO = arbolService.actualizarArbol(arbolDTO, id);
 
+        if (arbolActualizadoDTO != null) { // Si el árbol se actualizó correctamente
+            return new ResponseEntity<>(arbolActualizadoDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Devuelve NOT FOUND si el árbol no se encuentra
+        }
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarArbol(@PathVariable Long id) {
         return new ResponseEntity<>(arbolService.eliminarArbol(id), HttpStatus.OK);
