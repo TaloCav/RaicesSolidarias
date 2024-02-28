@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -33,8 +34,11 @@ public class Actividad {
     @Max(value = 1000)
     private Integer arbolesSembrados;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "actividadArbol", cascade = CascadeType.ALL)
-    private List<Arbol> arbolesSembradosActividad;
+    @ManyToMany(mappedBy = "actividades")
+    private Set<Usuario> usuarios;
+
+
+
+
 
 }

@@ -59,5 +59,14 @@ public class Usuario {
     )
     private Set<Actividad> actividades;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "usuario_arbol",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "arbol_id")
+    )
+    private List<Arbol> arboles;
+
+
 
 }

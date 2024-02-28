@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import javax.validation.constraints.Max;
+import java.util.Set;
 
 @Entity
 @Data
@@ -21,8 +22,9 @@ public class Arbol {
     @Max(value = 30)
     private String nombreCientifico;
 
-    @ManyToOne
-    @JoinColumn(name = "actividad_id")
-    private Actividad actividadArbol;
+    @ManyToMany(mappedBy = "arboles")
+    private Set<Usuario> usuarios;
+
+
 
 }
