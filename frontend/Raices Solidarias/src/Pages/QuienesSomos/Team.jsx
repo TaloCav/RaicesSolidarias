@@ -1,6 +1,13 @@
 import React from "react";
 import "./Team.css";
 import ImagenTeam from "../../components/assets/ArbolesTeam.svg";
+import ImagenTeam2 from "../../components/assets/RastrilloTeam.svg";
+import ImagenTeam3 from "../../components/assets/BosqueTeam.svg";
+import BannerTeam from "../../components/assets/BANNER.jpg";
+import Participacion from "../../components/assets/Participacion.svg";
+import Compromiso from "../../components/assets/Compromiso.svg";
+import Responsabilidad from "../../components/assets/Responsabilidad.svg";
+import Ecoeficiencia from "../../components/assets/Ecoeficiencia.svg";
 
 function Team() {
   return (
@@ -34,10 +41,10 @@ function Team() {
               sostenibilidad para las nuevas generaciones.
             </p>
           </div>
-          <img className="tamañoImg-Team" src={ImagenTeam} alt="ImagenTeam1" />
+          <img className="tamañoImg-Team" src={ImagenTeam2} alt="ImagenTeam2" />
         </div>
         <div className="container-team">
-          <img className="tamañoImg-Team" src={ImagenTeam} alt="ImagenTeam1" />
+          <img className="tamañoImg-Team" src={ImagenTeam3} alt="ImagenTeam3" />
           <div className="container-TextTeam">
             <h2>Visión</h2>
             <p>
@@ -50,6 +57,46 @@ function Team() {
               iniciativas y contribuyendo a un Chile más ecológico y sostenible
               para las futuras generaciones.
             </p>
+          </div>
+        </div>
+        <div className="banner-Team"></div> {/* poner fotos aca dps */}
+        <div>
+          <div className="container-team-nuestrosValores">
+            <h2>Nuestros Valores</h2>
+          </div>
+          <div className="container-imgTeam">
+            <div className="container-imgText">
+              <img
+                className="tamaño-nuestrosValores"
+                src={Participacion}
+                alt="Nuestros-Valores-Img"
+              />
+              <h2>Participacion</h2>
+            </div>
+            <div className="container-imgText">
+              <img
+                className="tamaño-nuestrosValores"
+                src={Compromiso}
+                alt="Nuestros-Valores-Img"
+              />
+              <h2>Compromiso</h2>
+            </div>
+            <div className="container-imgText">
+              <img
+                className="tamaño-responsabilidad"
+                src={Responsabilidad}
+                alt="Nuestros-Valores-Img"
+              />
+              <h2>Responsabilidad</h2>
+            </div>
+            <div className="container-imgText">
+              <img
+                className="tamaño-nuestrosValores"
+                src={Ecoeficiencia}
+                alt="Nuestros-Valores-Img"
+              />
+              <h2>Ecoeficiencia</h2>
+            </div>
           </div>
         </div>
       </div>

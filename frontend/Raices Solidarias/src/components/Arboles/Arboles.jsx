@@ -21,8 +21,8 @@ function Arboles() {
             <div key={item.id} className="card">
               <img src={Arbol} alt="Arbolito" />
               <div>
-                <p>Nombre comun:{item.nombreComun}</p>
-                <p>Nombre Cientifico{item.nombreCientifico}:</p>
+                <p>Nombre comun: {item.nombreComun}</p>
+                <p>Nombre Cientifico: {item.nombreCientifico}:</p>
               </div>
             </div>
           ))}

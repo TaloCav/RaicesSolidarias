@@ -50,3 +50,45 @@
   line-height: 27px;
   text-align: center;
 }
+
+@media screen and (max-width: 400px) {
+  .contenedor-nav {
+    height: 100%;
+    width: 100%;
+  }
+  .nav-menu {
+    gap: 13px;
+    font-size: 15px;
+    display: none;
+  }
+  .Contactame {
+    scale: 50%;
+    margin: 2px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .nav-logo {
+    display: none;
+  }
+  .Contactame {
+    scale: 75%;
+  }
+  .nav-menu {
+    gap: 14px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Contactame {
+    scale: 85%;
+  }
+  .nav-menu {
+    gap: 14px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+}

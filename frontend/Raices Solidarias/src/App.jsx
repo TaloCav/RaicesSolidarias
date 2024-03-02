@@ -7,6 +7,7 @@ import Register from "./Pages/Registro/Register";
 import Perfil from "./Pages/Perfil/PerfilUsuario";
 import Informacion from "./Pages/Informacion/Informacion";
 import QuienesSomos from "./Pages/QuienesSomos/Team";
+import Actividades from "./Pages/Actividades/Actividades";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/perfil" element={<Perfil />}></Route>
               <Route path="/informacion" element={<Informacion />}></Route>
               <Route path="/quienesSomos" element={<QuienesSomos />}></Route>
+              <Route path="/actividades" element={<Actividades />}></Route>
             </Routes>
           </div>
         </div>
