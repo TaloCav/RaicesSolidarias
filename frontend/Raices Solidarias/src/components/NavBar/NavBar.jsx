@@ -1,6 +1,7 @@
 import "./Navbar.css";
 import logo from "../assets/logo.png";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -11,12 +12,26 @@ function NavBar() {
         </div>
         <div className="navbar">
           <ul className="nav-menu">
-            <li>¿Quiénes Somos?</li>
-            <li>Infórmate</li>
-            <li>Nuestras Actividades</li>
+            <li>
+              <a className="text-liA" href="#quienesSomosHref">
+                ¿Quiénes Somos?
+              </a>
+            </li>
+            <li>
+              <a className="text-liA" href="#informateHref">
+                Infórmate
+              </a>
+            </li>
+            <li>
+              <a className="text-liA" href="#nuestrasActividadesHref">
+                Nuestras Actividades
+              </a>
+            </li>
           </ul>
         </div>
-        <button className="Contactame">CONECTARME</button>
+        <a href="/login">
+          <button className="Contactame">CONECTARME</button>
+        </a>
       </div>
     </header>
   );

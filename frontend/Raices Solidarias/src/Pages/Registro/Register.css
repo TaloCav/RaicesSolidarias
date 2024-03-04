@@ -34,9 +34,9 @@
 
 .inputContainer {
   position: relative;
-  height: 45px;
+  height: 50px;
   width: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .input {
@@ -147,4 +147,49 @@
   z-index: 10;
   font-size: 20px;
   font-weight: 600;
+}
+
+.contenedor-volverRegistro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 19%;
+  width: 500px;
+}
+
+.volver-registro {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 22px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px) {
+  .logoRegistro {
+    width: 150px;
+    height: 150px;
+  }
+  .form {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logoRegistro {
+    width: 100px;
+    height: 100px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .signupFrm {
+    max-width: 800px;
+  }
 }

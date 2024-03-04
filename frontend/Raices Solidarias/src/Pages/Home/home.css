@@ -23,24 +23,28 @@
   background: #fcff7b;
   border-radius: 20px;
   border: 0px;
-  /* Feunte Letra */
   font-family: "Glory";
   font-style: normal;
   font-weight: 800;
   font-size: 30px;
   line-height: 45px;
   color: #000000;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btt:hover {
+  background-color: #70f74f;
 }
 
 .contenedor-Text1 {
   /*  background-color: aqua; */
   display: flex;
   align-items: center;
-  width: 1550px;
+  width: 100%;
   height: 28px;
   top: 450px;
 
-  font-family: "Abhaya Libre";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -53,7 +57,7 @@
 }
 
 .contenedor-Text2 {
-  width: 1500px;
+  width: 100%;
   height: 200px;
   left: 265px;
   top: 488px;
@@ -88,47 +92,62 @@
 }
 
 .contenedor-Textos {
-  background-color: red;
   height: 500px;
   width: 700px;
   margin-left: 200px;
 }
 
-.contenedor-Textos > h2 {
-  /* ¿Quiénes somos? */
-
-  width: 555px;
-  height: 76px;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 76px;
-
-  color: #ffffff;
-}
-
-.contenedor-Textos > p {
+.contenedor-Textos  p {
   /* En Raíces Solidarias, nos comprometemos fervientemente con la restauración de los bosques nativos en Chile. A través de nuestra plataforma, puedes contribuir de manera cercana y cómoda a la reforestación. Además, encontrarás información de calidad para que descubras la belleza y la diversidad de la flora y fauna autóctona de Chile. ¡Recuerda que cada árbol que plantamos representa una esperanza para un mañana más verde y sostenible! */
-
-  width: 632px;
-  height: 224px;
 
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
-
+  color: #ffffff;
+}
+.contenedor-Textos  h2 {
+  height: 76px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 76px;
   color: #ffffff;
 }
 
+.contenedor-TextosBlack {
+  height: 500px;
+  width: 700px;
+  margin-left: auto;
+}
+
+.contenedor-TextosBlack h2{
+  height: 76px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 76px;
+  color: #000000;
+}
+
+.contenedor-TextosBlack p{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  color: #000000;
+}
+
+
+
 .tamañoImagen {
-  height: 870px;
+  width:870px;
+  height: auto;
 }
 
 .container-home3 {
-  /* Rectangle 6 */
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   position: relative;
   height: 100vh;
@@ -137,27 +156,118 @@
   background: #fcff7b;
 }
 
-.contenedor-Textos > h2 {
-  /* Infórmate */
-
-  width: 555px;
-  height: 76px;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 76px;
-  /* identical to box height */
-
-  color: #1c260b;
-}
-
 .container-home4 {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   position: relative;
   height: 100vh;
   width: 100vw;
   background: #2a3911;
   box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.2);
+}
+
+.textHrefBlack{
+  text-decoration: none;
+  color: #2a3911;
+  font-size: 20px;
+  margin-top: 2%;
+}
+
+.textHref{
+  text-decoration: none;
+  color: #fcff7b;
+  font-size: 20px;
+  margin-top: 2%;
+}
+
+
+/* responsive */
+
+/* Estilos para pantallas muy pequeñas, como smartphones en orientación vertical */
+@media screen and (max-width: 480px) {
+  .contenedor-Text1 p {
+    font-size: 12px;
+  }
+
+  .contenedor-Text2 h1 {
+    font-size: 20px;
+    line-height: 1.1; /
+  }
+  .btt{
+    scale: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor-Text1 p {
+    font-size: 14px;
+  }
+
+  .contenedor-Text2 h1 {
+    font-size: 18px;
+    line-height: 1.2; 
+  }
+
+  .btt-container {
+    flex-direction: column;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .contenedor-Text1 p {
+    font-size: 20px;
+  }
+
+  .contenedor-Text2 h1 {
+    font-size: 30px;
+    line-height: 1.1; 
+  }
+  .contenedor-Textos{
+    width: 100%;
+    height: 30%;
+  }
+  .contenedor-TextosBlack{
+    width: 100%;
+    height: 60%;
+    margin: auto;
+  }
+  .tamañoImagen{
+    width: 550px;
+   }
+}
+
+/* Estilos para pantallas grandes */
+@media screen and (max-width: 1400px) {
+  .contenedor-Text1 {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .contenedor-Text2 {
+    font-size: 25px;
+    width: 100%;
+  }
+  .contenedor-Textos h2{
+    font-size: 40px;
+  }
+  .container-home2{
+    flex-wrap: wrap;
+  }
+  .tamañoImagen{
+    width: 40%; 
+  }
+}
+
+
+@media screen and (max-width: 1600px){
+  .contenedor-Textos{
+    margin-left: 0px;
+  }
+  .tamañoImagen{
+    width: 45%; 
+  }
 }

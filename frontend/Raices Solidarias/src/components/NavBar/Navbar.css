@@ -28,9 +28,14 @@
 
 .nav-menu {
   display: flex;
+  text-decoration: none;
   align-items: 38px;
   list-style: none;
   gap: 100px;
+}
+
+.text-liA {
+  text-decoration: none;
   color: #ffffff;
   font-size: 20px;
   font-weight: 500;
@@ -49,6 +54,12 @@
   font-weight: 800;
   line-height: 27px;
   text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.Contactame:hover {
+  background-color: #70f74f;
 }
 
 @media screen and (max-width: 400px) {
