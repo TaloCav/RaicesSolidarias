@@ -2,11 +2,13 @@ package com.equipo3.raicessolidarias.dto;
 
 import com.equipo3.raicessolidarias.model.Rol;
 import lombok.Data;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 @Data
+@CrossOrigin("*")
 public class UsuarioDTO {
 
     private LocalDate fechaDeNacimiento;

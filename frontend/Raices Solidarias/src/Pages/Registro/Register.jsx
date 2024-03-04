@@ -43,7 +43,7 @@ function Register() {
     // Crear el objeto formDataWithRoles que incluye los roles
     const formDataWithRoles = {
       ...formData,
-      roles: rol,
+      rol: rol,
     };
 
     // Eliminar confirmarContraseña y voluntario del objeto formDataWithRoles
@@ -62,6 +62,7 @@ function Register() {
       console.error("Error al registrar usuario:", error);
     }
   };
+
   return (
     <>
       <div className="contenedorLogoRegistro">
