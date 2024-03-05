@@ -35,10 +35,7 @@ public class Usuario {
 
     @Max(value = 20, message = "El apellido no puede ser superior a 20 caracteres.")
     private String apellido;
-
-    @Size(max = 20)
-    @Column(unique = true)
-    private String username;
+    
 
     @Enumerated(EnumType.STRING)
     private Genero genero;
