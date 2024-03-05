@@ -20,7 +20,7 @@ public interface UsuarioService {
     String eliminarUsuario(Long id);
 
     Boolean existeUsuarioPorEmail(String email);
-    Boolean existeUsuarioPorUsername(String username);
+
 
 
 

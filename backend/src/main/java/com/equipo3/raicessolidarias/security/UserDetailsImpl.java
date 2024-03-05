@@ -18,7 +18,6 @@ public class UserDetailsImpl implements UserDetails {
 
     private Long id;
 
-    private String username;
 
     private String email;
 
@@ -34,7 +33,6 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 usuario.getId(),
-                usuario.getUsername(),
                 usuario.getEmail(),
                 usuario.getPassword(),
                 authorities);
@@ -61,8 +59,9 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return null;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {

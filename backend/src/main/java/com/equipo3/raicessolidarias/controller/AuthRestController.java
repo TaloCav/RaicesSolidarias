@@ -45,7 +45,7 @@ public class AuthRestController {
 
         // Autentica al usuario utilizando el gestor de autenticación de Spring Security
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         // Establece la autenticación en el contexto de seguridad de Spring Security
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -57,13 +57,13 @@ public class AuthRestController {
         String jwtToken = jwtUtils.generateJwtToken(userDetails);
 
         // Retorna una respuesta exitosa con el token JWT y detalles del usuario
-        return new ResponseEntity<>(new JwtResponse(jwtToken, userDetails.getUsername(), userDetails.getEmail()), HttpStatus.OK);
+        return new ResponseEntity<>(new JwtResponse(jwtToken, userDetails.getEmail()), HttpStatus.OK);
     }
 
     @PostMapping("/registro")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistroDTO solicitudRegistro) {
         // Verifica si el nombre de usuario ya está en uso
-        if (usuarioService.existeUsuarioPorUsername(solicitudRegistro.getUsername())) {
+        if (usuarioService.existeUsuarioPorEmail(solicitudRegistro.getEmail())) {
             return ResponseEntity.badRequest().body(new String("Error: El username ya está en uso!"));
         }
 
@@ -74,7 +74,6 @@ public class AuthRestController {
 
         // Crea una nueva cuenta de usuario
         Usuario usuario = Usuario.builder()
-                .username(solicitudRegistro.getUsername())
                 .email(solicitudRegistro.getEmail())
                 .password(passwordEncoder.encode(solicitudRegistro.getPassword()))
                 .nombre(solicitudRegistro.getNombre()) // Añade nombre
@@ -129,7 +128,6 @@ public class AuthRestController {
     @Setter
     public class JwtResponse {
         private String token;
-        private String username;
         private String email;
     }
 }

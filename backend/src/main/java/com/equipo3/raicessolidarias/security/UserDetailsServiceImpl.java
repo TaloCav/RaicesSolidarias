@@ -1,4 +1,5 @@
 package com.equipo3.raicessolidarias.security;
+
 import com.equipo3.raicessolidarias.model.Usuario;
 import com.equipo3.raicessolidarias.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -15,9 +16,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UsuarioRepository userRepository;
 
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " + email));
 
         return UserDetailsImpl.build(usuario);
     }

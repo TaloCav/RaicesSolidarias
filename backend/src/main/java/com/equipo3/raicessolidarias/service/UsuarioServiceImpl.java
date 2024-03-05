@@ -37,16 +37,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
-
     @Override
     public UsuarioDTO buscarUsuarioPorEmail(String email) {
-        Boolean usuarioExiste = usuarioRepository.existsByEmail(email);
-        if(usuarioExiste) {
-            return mapper.convertValue(usuarioRepository.findUsuarioByEmail(email),UsuarioDTO.class);
-        } else {
-            return null;
-        }
+        return null;
     }
+
 
     @Override
     public List<Usuario> listarUsuarios() {
@@ -87,11 +82,11 @@ public class UsuarioServiceImpl implements UsuarioService {
             return "El usuario no existe en la base de datos.";
         }
     }
-    public Boolean existeUsuarioPorUsername(String username) {
-        return usuarioRepository.existsByUsername(username);
-    }
+
 
     public Boolean existeUsuarioPorEmail(String email) {
         return usuarioRepository.existsByEmail(email);
     }
+
+
 }
