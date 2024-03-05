@@ -22,6 +22,18 @@ public class Arbol {
     @Max(value = 30)
     private String nombreCientifico;
 
+    @Column(name = "tipo", unique = true, nullable = false)
+    @Max(value = 30)
+    private String tipo;
+
+    private String imagen;
+
+    private Double precio;
+
+
+
+
+
     @ManyToMany(mappedBy = "arboles")
     private Set<Usuario> usuarios;
 

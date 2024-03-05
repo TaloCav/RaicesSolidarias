@@ -1,11 +1,13 @@
 package com.equipo3.raicessolidarias.dto;
 
-import com.equipo3.raicessolidarias.model.Rol;
+import com.equipo3.raicessolidarias.model.ERol;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+
 @Data
 public class UsuarioDTO {
 
@@ -14,16 +16,9 @@ public class UsuarioDTO {
     private String apellido;
     private String email;
     private String contrasenia;
-    private List<Rol> roles;
+    private List<ERol> roles;
 
-    public int calcularEdad() {
-        if (this.fechaDeNacimiento != null) {
-            LocalDate ahora = LocalDate.now();
-            return Period.between(this.fechaDeNacimiento, ahora).getYears();
-        } else {
-            return 0;
-        }
-    }
+
 
 
 }

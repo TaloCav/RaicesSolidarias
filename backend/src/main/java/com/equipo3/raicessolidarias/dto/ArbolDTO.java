@@ -6,5 +6,8 @@ import lombok.Data;
 public class ArbolDTO {
     private String nombreComun;
     private String nombreCientifico;
+    private String tipo;
+    private String imagen;
+    private Double precio;
 
 }

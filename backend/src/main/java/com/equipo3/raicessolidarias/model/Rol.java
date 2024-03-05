@@ -1,22 +1,25 @@
 package com.equipo3.raicessolidarias.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
-@Table(name = "Roles")
+@Table(name = "roles")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Rol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @Column(name = "nombre_rol", nullable = false)
-    private NombreRol nombreRol;
-    /*
-    @ManyToMany(mappedBy = "roles")
-    private List<Usuario> usuarios;
-    */
+    // Mapea un tipo enumerado (enum) de Java a una columna de la base de datos.
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERol nombre;
 }

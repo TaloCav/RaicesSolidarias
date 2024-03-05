@@ -17,20 +17,20 @@ public class ArbolServiceImpl implements ArbolService {
     private final ArbolRepository arbolRepository;
     private final ObjectMapper mapper;
     @Override
-    public ArbolDTO registrarArbol(ArbolDTO arbolDTO) {
+    public Arbol registrarArbol(Arbol arbol) {
         // Verificar si ya existe un árbol con el mismo nombre científico
-        Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbolDTO.getNombreCientifico());
+        Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbol.getNombreCientifico());
 
         if (arbolExiste) {
             return null;
         } else {
 
-            Arbol arbolAGuardar = mapper.convertValue(arbolDTO, Arbol.class);
+            Arbol arbolAGuardar = mapper.convertValue(arbol, Arbol.class);
 
             Arbol arbolGuardado = arbolRepository.save(arbolAGuardar);
 
 
-            return mapper.convertValue(arbolGuardado, ArbolDTO.class);
+            return arbolGuardado;
         }
     }
 
@@ -63,6 +63,7 @@ public class ArbolServiceImpl implements ArbolService {
 
             arbolExistente.setNombreComun(arbolDTO.getNombreComun());
             arbolExistente.setNombreCientifico(arbolDTO.getNombreCientifico());
+            arbolExistente.setTipo(arbolDTO.getTipo());
 
             // Guardar el árbol actualizado en la base de datos
             Arbol arbolActualizado = arbolRepository.save(arbolExistente);

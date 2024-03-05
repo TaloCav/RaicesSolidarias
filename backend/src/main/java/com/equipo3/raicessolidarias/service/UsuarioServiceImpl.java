@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 
 @Service
@@ -18,21 +18,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final ObjectMapper mapper;
 
+
     @Override
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
-        Boolean usuarioExiste = usuarioRepository.existsByEmail(usuarioDTO.getEmail());
-        int edad = usuarioDTO.calcularEdad();
+    public Usuario registrarNuevoUsuario(Usuario usuario) {
+        // Guardar el nuevo usuario en la base de datos
+        Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
-        if(usuarioExiste || edad < 18) {
-            return null;
-        } else {
-            Usuario usuarioAGuardar = mapper.convertValue(usuarioDTO, Usuario.class);
-            usuarioRepository.save(usuarioAGuardar);
-            UsuarioDTO usuarioARetornar = mapper.convertValue(usuarioAGuardar, UsuarioDTO.class);
-            return usuarioARetornar;
-        }
+        return usuarioGuardado; // Devolver el usuario guardado en la base de datos
     }
-
     @Override
     public Usuario buscarUsuarioPorId(Long id) {
         Boolean usuarioExiste = usuarioRepository.existsById(id);
@@ -71,9 +64,9 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioExistente.setNombre(usuarioDTO.getNombre());
             usuarioExistente.setApellido(usuarioDTO.getApellido());
             usuarioExistente.setEmail(usuarioDTO.getEmail());
-            usuarioExistente.setContrasenia(usuarioDTO.getContrasenia());
+            usuarioExistente.setPassword(usuarioDTO.getContrasenia());
             usuarioExistente.setFechaDeNacimiento(usuarioDTO.getFechaDeNacimiento());
-            usuarioExistente.setRoles(usuarioDTO.getRoles());
+
 
             Usuario usuarioActualizado = usuarioRepository.save(usuarioExistente);
 
@@ -93,5 +86,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         } else {
             return "El usuario no existe en la base de datos.";
         }
+    }
+    public Boolean existeUsuarioPorUsername(String username) {
+        return usuarioRepository.existsByUsername(username);
+    }
+
+    public Boolean existeUsuarioPorEmail(String email) {
+        return usuarioRepository.existsByEmail(email);
     }
 }

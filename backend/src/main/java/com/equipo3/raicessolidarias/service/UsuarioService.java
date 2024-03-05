@@ -2,12 +2,11 @@ package com.equipo3.raicessolidarias.service;
 
 import com.equipo3.raicessolidarias.dto.UsuarioDTO;
 import com.equipo3.raicessolidarias.model.Usuario;
-import com.equipo3.raicessolidarias.repository.UsuarioRepository;
 
 import java.util.List;
 
 public interface UsuarioService {
-    UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
+    Usuario registrarNuevoUsuario(Usuario usuario);
 
     Usuario buscarUsuarioPorId(Long id);
 
@@ -17,6 +16,12 @@ public interface UsuarioService {
 
     UsuarioDTO actualizarUsuario(UsuarioDTO usuarioDTO, Long id);
 
+
     String eliminarUsuario(Long id);
+
+    Boolean existeUsuarioPorEmail(String email);
+    Boolean existeUsuarioPorUsername(String username);
+
+
 
 }

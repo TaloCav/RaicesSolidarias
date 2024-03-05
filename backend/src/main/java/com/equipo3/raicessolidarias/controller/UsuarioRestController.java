@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @AllArgsConstructor
@@ -16,27 +16,23 @@ import java.util.List;
 public class UsuarioRestController {
     private final UsuarioServiceImpl usuarioService;
 
-    @PostMapping("/registrar")
-    public ResponseEntity<UsuarioDTO> registrarUsuario(@RequestBody UsuarioDTO usuario) {
-        UsuarioDTO usuarioRegistrado = usuarioService.registrarUsuario(usuario);
-        return new ResponseEntity<>(usuarioRegistrado, HttpStatus.CREATED);
-    }
 
+
+    @PostMapping("/registro")
+    public ResponseEntity<Usuario> registrarNuevoUsuario(@RequestBody Usuario usuario) {
+        Usuario usuarioGuardado = usuarioService.registrarNuevoUsuario(usuario);
+        if (usuarioGuardado != null) {
+            return ResponseEntity.ok(usuarioGuardado);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long id) {
         Usuario usuarioBuscado = usuarioService.buscarUsuarioPorId(id);
         return new ResponseEntity<>(usuarioBuscado, HttpStatus.OK);
     }
-    @GetMapping("/email/{email}")
-    public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@PathVariable String email) {
-        UsuarioDTO usuarioEncontrado = usuarioService.buscarUsuarioPorEmail(email);
 
-        if (usuarioEncontrado != null) {
-            return new ResponseEntity<>(usuarioEncontrado, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
     @GetMapping("/todos")
     public ResponseEntity<List<Usuario>> listarUsuarios() {
@@ -54,8 +50,10 @@ public class UsuarioRestController {
         }
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
         return new ResponseEntity<>(usuarioService.eliminarUsuario(id), HttpStatus.OK);
     }
+
 }
