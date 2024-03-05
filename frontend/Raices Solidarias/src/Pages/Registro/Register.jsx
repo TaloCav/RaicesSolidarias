@@ -9,7 +9,7 @@ function Register() {
     apellido: "",
     fechaDeNacimiento: "",
     email: "",
-    contrasenia: "",
+    password: "",
     confirmarContraseña: "",
     donador: false,
     voluntario: false,
@@ -25,19 +25,34 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Verificar si las contraseñas coinciden
-    if (formData.contrasenia !== formData.confirmarContraseña) {
+    if (formData.password !== formData.confirmarContraseña) {
       alert("Las contraseñas no coinciden");
       return; // Detener el envío del formulario
+    }
+
+    // Verificar el formato de correo electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("El correo electrónico no es válido");
+      return;
+    }
+
+    // Verificar el formato de la fecha de nacimiento
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(formData.fechaDeNacimiento)) {
+      alert("El formato de fecha de nacimiento no es válido (AAAA-MM-DD)");
+      return;
     }
 
     // Crear la lista de roles a partir de los campos donador y voluntario
     const rol = [];
     if (formData.donador) {
-      rol.push("Donador");
+      rol.push("donante");
     }
     if (formData.voluntario) {
-      rol.push("Voluntario");
+      rol.push("voluntario");
     }
 
     // Crear el objeto formDataWithRoles que incluye los roles
@@ -54,7 +69,7 @@ function Register() {
     try {
       console.log(formDataWithRoles);
       const response = await axios.post(
-        "http://localhost:8080/usuario/registrar",
+        "http://localhost:8080/api/auth/registro",
         formDataWithRoles
       );
       console.log(response.data);
@@ -62,6 +77,7 @@ function Register() {
       console.error("Error al registrar usuario:", error);
     }
   };
+
   return (
     <>
       <div className="contenedor-hiddenNavbar">
@@ -141,12 +157,12 @@ function Register() {
               <input
                 type="password"
                 className="input"
-                id="contrasenia"
+                id="password"
                 placeholder="a"
-                value={formData.contrasenia}
+                value={formData.password}
                 onChange={handleChange}
               />
-              <label htmlFor="contrasenia" className="label">
+              <label htmlFor="password" className="label">
                 Contraseña
               </label>
             </div>

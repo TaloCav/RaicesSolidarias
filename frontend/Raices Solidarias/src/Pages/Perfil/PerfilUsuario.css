@@ -1,0 +1,79 @@
+.container-perfil {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(42, 57, 17, 0.5);
+  gap: 80px;
+  align-items: center;
+  padding-top: 80px;
+  width: fit-content;
+  margin-left: 200px;
+  height: 630px;
+}
+
+.container-usuario {
+  background-color: #fcff7b;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: "Abhaya Libre";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 10px;
+  color: #2a3911;
+}
+
+.container-usuario h2 {
+  font-family: "Glory";
+  font-weight: 943;
+  font-style: normal;
+  font-size: 35px;
+  line-height: 45px;
+  padding-bottom: 25px;
+  text-align: center;
+  color: #2a3911;
+}
+
+.container-usuario div p {
+  margin-bottom: 35px;
+}
+
+.botones-container {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 10px;
+}
+
+.formato-boton {
+  background-color: #fcff7b;
+  border-radius: 15px;
+  padding: 22px;
+  text-align: center;
+  color: #000000;
+  font-family: "Glory";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 45px;
+  width: 300px;
+}
+
+.container-medio {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-medio a {
+  text-decoration: none;
+  color: #fcff7b;
+  font-family: "Glory";
+  font-weight: 800;
+  font-size: 20px;
+  padding-bottom: 25px;
+}
+
+.arboles-container {
+  margin-top: 1px;
+  height: 530px;
+  padding: 30px;
+}

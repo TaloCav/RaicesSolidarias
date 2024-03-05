@@ -3,7 +3,9 @@ import logo from "../assets/logo.png";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ user }) {
+  Link;
+
   return (
     <header>
       <div className="contenedor-nav">
@@ -13,25 +15,32 @@ function NavBar() {
         <div className="navbar">
           <ul className="nav-menu">
             <li>
-              <a className="text-liA" href="#quienesSomosHref">
+              <Link className="text-liA" to="/quienesSomos">
                 ¿Quiénes Somos?
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-liA" href="#informateHref">
+              <Link className="text-liA" to="/informacion">
                 Infórmate
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-liA" href="#nuestrasActividadesHref">
+              <Link className="text-liA" to="/actividades">
                 Nuestras Actividades
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <a href="/login">
-          <button className="Contactame">CONECTARME</button>
-        </a>
+        {!user && (
+          <button className="btt-perfil-usuario">
+            <Link to="/login">CONECTARME</Link>
+          </button>
+        )}
+        {user && (
+          <button className="Conectarme">
+            <Link to="/pefil">MI PERFIL</Link>
+          </button>
+        )}
       </div>
     </header>
   );

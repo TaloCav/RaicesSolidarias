@@ -41,7 +41,7 @@
   font-weight: 500;
 }
 
-.Contactame {
+.Conectarme {
   margin: 15px;
   width: 200px;
   height: 60px;
@@ -59,6 +59,27 @@
 }
 
 .Contactame:hover {
+  background-color: #70f74f;
+}
+
+.btt-perfil-usuario {
+  margin: 15px;
+  width: 200px;
+  height: 60px;
+  background: #fcff7b;
+  border: 0px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Glory";
+  font-style: normal;
+  font-weight: 800;
+  line-height: 27px;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.btt-perfil-usuario {
   background-color: #70f74f;
 }
 

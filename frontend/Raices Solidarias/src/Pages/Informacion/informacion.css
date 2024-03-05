@@ -10,28 +10,31 @@
 }
 
 .tabuladores {
-  /* background-color: blue; */
+  /*  background-color: blue; */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 60px;
+  height: 65px;
   width: 100%;
 }
 
 .tab-menu {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  width: 100%;
   justify-content: center;
   list-style: none;
-  gap: 100px;
+  gap: auto;
   color: #000000;
   font-size: 20px;
   font-weight: 500;
 }
 
 .btt-tabs {
-  width: 150px;
+  width: 30%;
   height: 60px;
+  margin-left: 1%;
+  margin-right: 1%;
   border: none;
   background-color: #ffffff;
   transition-duration: 0.4s;
@@ -43,7 +46,7 @@
 }
 
 .btt-tabs1 {
-  width: 150px;
+  width: 45%;
   height: 60px;
   border: none;
   background-color: #ffffff;
@@ -53,7 +56,7 @@
 }
 
 .btt-tabs2 {
-  width: 150px;
+  width: 45%;
   height: 60px;
   border: none;
   background-color: #ffffff;
@@ -63,8 +66,9 @@
 }
 
 .btt-tabs3 {
-  width: 150px;
+  width: 45%;
   height: 60px;
+
   border: none;
   background-color: #ffffff;
   transition-duration: 0.4s;
@@ -73,8 +77,9 @@
 }
 
 .btt-tabs4 {
-  width: 150px;
+  width: 45%;
   height: 60px;
+
   border: none;
   background-color: #ffffff;
   transition-duration: 0.4s;
@@ -83,7 +88,7 @@
 }
 
 .btt-tabs5 {
-  width: 150px;
+  width: 45%;
   height: 60px;
   border: none;
   background-color: #ffffff;
@@ -129,4 +134,34 @@
   height: 550px;
   left: 60%;
   top: 20%;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 400px) {
+}
+
+@media only screen and (max-width: 700px) {
+  .btt-tabs {
+    width: 20%;
+    padding: 16px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .tabuladores {
+    width: 100%;
+  }
+  .btt-tabs {
+    width: 20%;
+    padding: 25px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container-tabuladores {
+    width: 100%;
+    margin: 0px;
+    left: 0;
+  }
 }

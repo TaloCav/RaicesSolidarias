@@ -8,11 +8,19 @@ import Perfil from "./Pages/Perfil/PerfilUsuario";
 import Informacion from "./Pages/Informacion/Informacion";
 import QuienesSomos from "./Pages/QuienesSomos/Team";
 import Actividades from "./Pages/Actividades/Actividades";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
-  /*  {useLocation} */
+
+  useEffect(() => {
+    const usuario = JSON.parse(localStorage.getItem("user"));
+    if (usuario) {
+      setUser(usuario);
+    } else {
+      setUser(null);
+    }
+  }, []);
 
   let { pathname } = useLocation();
   const myRuts = () => {
@@ -20,6 +28,7 @@ function App() {
     if (pathname === "/") isValid = false;
     if (pathname === "/informacion") isValid = false;
     if (pathname === "/quienesSomos") isValid = false;
+    if (pathname === "/registro") isValid = false;
     return isValid;
   };
   console.log(pathname);
@@ -27,8 +36,8 @@ function App() {
     <>
       <div className="lazyImg">
         <div className="container-principal">
-          <NavBar />
-          {myRuts() && user === null && <Login />}
+          <NavBar user={user} />
+          {myRuts() && user === null && <Login setUser={setUser} />}
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/registro" element={<Register />}></Route>
