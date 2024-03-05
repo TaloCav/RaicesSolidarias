@@ -1,0 +1,53 @@
+.container-arbol {
+ height: 630px;
+  width: 500px;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+ 
+  font-size: 18px;
+  max-height: 400px; 
+  
+  
+}
+.container-arbol p{
+  justify-content: center;
+  padding-top: 15px;
+  font-family: "Abhaya Libre";
+  font-weight: 600;
+  color: #FCFF7B;
+  font-size: 24px;
+  
+  
+}
+
+.container-arbol h2 {
+  color: aliceblue;
+  font-size: 35px;
+  font-family: "Glory";
+  color: #FCFF7B;
+
+
+
+}
+
+
+.container-arbol > .card {
+  display: flex;
+  height: 150px;
+  width: 450px;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-wrap: normal;
+ 
+
+  
+}
+
+.container-arbol > .card img {
+  height: 70px;
+}
+
