@@ -75,11 +75,11 @@
   font-weight: 800;
   line-height: 27px;
   text-align: center;
-  transition: 0.2s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
-.btt-perfil-usuario {
+.btt-perfil-usuario:hover {
   background-color: #70f74f;
 }
 
@@ -104,11 +104,12 @@
     display: none;
   }
   .Contactame {
-    scale: 75%;
+    scale: 65%;
   }
   .nav-menu {
     gap: 14px;
     font-size: 15px;
+    display: none;
   }
 }
 

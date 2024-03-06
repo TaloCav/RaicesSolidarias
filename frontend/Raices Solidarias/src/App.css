@@ -21,11 +21,11 @@
   z-index: 2;
 }
 
-.lazyImg {
+/* .lazyImg {
   background-image: url("./components/assets/Fondo_Home2.svg");
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
+} */

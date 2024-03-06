@@ -1,5 +1,13 @@
+.container-principalInformaciones {
+  display: flex;
+  height: 700px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 .container-tabuladores {
-  position: fixed;
+  position: flex;
   background-color: red;
   width: 83vw;
   height: 650px;
@@ -7,6 +15,7 @@
   top: 150px;
   background: #fcff7b;
   border-radius: 20px;
+  align-items: center;
 }
 
 .tabuladores {

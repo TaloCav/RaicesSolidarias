@@ -32,14 +32,14 @@ function NavBar({ user }) {
           </ul>
         </div>
         {!user && (
-          <button className="btt-perfil-usuario">
-            <Link to="/login">CONECTARME</Link>
-          </button>
+          <Link to="/login">
+            <button className="btt-perfil-usuario"> CONECTARME</button>
+          </Link>
         )}
         {user && (
-          <button className="Conectarme">
-            <Link to="/pefil">MI PERFIL</Link>
-          </button>
+          <Link to="/pefil">
+            <button className="btt-perfil-usuario">MI PERFIL</button>
+          </Link>
         )}
       </div>
     </header>

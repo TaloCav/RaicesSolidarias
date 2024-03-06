@@ -1,5 +1,4 @@
 .container {
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +10,6 @@
 .btt-container {
   margin-top: 60px;
   display: flex;
-  /* background-color: blue; */
   justify-content: center;
   width: 100%;
   gap: 30px;
@@ -37,48 +35,42 @@
   background-color: #70f74f;
 }
 
+.bar-container {
+  width: 60px;
+  height: 5px;
+  background-color: #fcff7b;
+  margin-right: 10px;
+}
+
 .contenedor-Text1 {
-  /*  background-color: aqua; */
   display: flex;
   align-items: center;
-  width: 100%;
-  height: 28px;
-  top: 450px;
-
+  width: auto;
+  height: auto;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 6px;
   text-transform: uppercase;
-
-  /* Amarillo */
+  margin-right: 30%;
+  margin-left: 5%;
   color: #fcff7b;
 }
 
 .contenedor-Text2 {
-  width: 100%;
-  height: 200px;
-  left: 265px;
-  top: 488px;
-
+  width: 80%;
+  height: auto;
   font-family: "Abhaya Libre";
   font-style: normal;
   font-size: 40px;
   line-height: 100px;
-
   display: flex;
   align-items: center;
-
   color: #ffffff;
 }
 
-.bar-container {
-  width: 60px;
-  height: 3px;
-  background-color: #fcff7b;
-  margin-right: 10px;
-}
+
 
 .container-home2 {
   /* HOME */
@@ -97,7 +89,7 @@
   margin-left: 200px;
 }
 
-.contenedor-Textos  p {
+.contenedor-Textos p {
   /* En Raíces Solidarias, nos comprometemos fervientemente con la restauración de los bosques nativos en Chile. A través de nuestra plataforma, puedes contribuir de manera cercana y cómoda a la reforestación. Además, encontrarás información de calidad para que descubras la belleza y la diversidad de la flora y fauna autóctona de Chile. ¡Recuerda que cada árbol que plantamos representa una esperanza para un mañana más verde y sostenible! */
 
   font-style: normal;
@@ -106,7 +98,7 @@
   line-height: 32px;
   color: #ffffff;
 }
-.contenedor-Textos  h2 {
+.contenedor-Textos h2 {
   height: 76px;
   font-style: normal;
   font-weight: 400;
@@ -187,7 +179,7 @@
 /* Estilos para pantallas muy pequeñas, como smartphones en orientación vertical */
 @media screen and (max-width: 480px) {
   .contenedor-Text1 p {
-    font-size: 12px;
+    
   }
 
   .contenedor-Text2 h1 {
@@ -202,8 +194,17 @@
 }
 
 @media screen and (max-width: 768px) {
+    
+  .contenedor-Text1{
+    margin: 25px;
+    
+  }
+  .bar-container{
+    display: none;
+  }
+
   .contenedor-Text1 p {
-    font-size: 14px;
+    font-size: 2px;
   }
 
   .contenedor-Text2 h1 {
@@ -213,18 +214,30 @@
 
   .btt-container {
     flex-direction: column;
+    align-items: center;
+  }
+  .btt{
+    width: 80%;
   }
 }
 
 
 @media screen and (max-width: 900px) {
+  .contenedor-Text1{
+    width: auto;
+  }
+
   .contenedor-Text1 p {
-    font-size: 20px;
+    font-size: 13px;
+  }
+
+  .bar-container{
+    width: 15px;
+    height: 2px;
   }
 
   .contenedor-Text2 h1 {
-    font-size: 30px;
-    line-height: 1.1; 
+    font-size: 30px; 
   }
   .contenedor-Textos{
     width: 100%;
@@ -238,36 +251,53 @@
   .tamañoImagen{
     width: 550px;
    }
+   .btt{
+    width: 350px;
+    font-size: 20px;
+   }
 }
 
 /* Estilos para pantallas grandes */
 @media screen and (max-width: 1400px) {
   .contenedor-Text1 {
     font-size: 20px;
-    width: 100%;
   }
 
   .contenedor-Text2 {
-    font-size: 25px;
-    width: 100%;
+    font-size: 20px;
+    width: 80%;
   }
   .contenedor-Textos h2{
-    font-size: 40px;
+    font-size: 25px;
   }
   .container-home2{
     flex-wrap: wrap;
   }
   .tamañoImagen{
-    width: 40%; 
+    width: 450px;
+   }
+   .contenedor-Textos{
+    width: 95%;
+    height: 30%;
+    
+  }
+  .contenedor-TextosBlack{
+    width: 95%;
+    height: 60%;
+    margin: auto;
   }
 }
 
 
-@media screen and (max-width: 1600px){
+@media screen and (max-width: 1800px){
   .contenedor-Textos{
-    margin-left: 0px;
+    margin-left: 20px;
   }
   .tamañoImagen{
-    width: 45%; 
+    width: 550px;
+   }
+  .contenedor-Textos h2{
+    font-size: 30px;
   }
-}
+ }
+
