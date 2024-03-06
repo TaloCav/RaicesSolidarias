@@ -7,7 +7,7 @@ import com.equipo3.raicessolidarias.model.Arbol;
 import java.util.List;
 
 public interface ArbolService {
-    public Arbol registrarArbol(Arbol arbol) ;
+    public ArbolDTO nuevoArbol(ArbolDTO arbolDTO);
     Arbol buscarArbolPorId(Long id);
     ArbolDTO buscarArbolPorNombreCientifico(String nombreCientifico);
 

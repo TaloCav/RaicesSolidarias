@@ -16,8 +16,10 @@ import java.util.List;
 public class ArbolServiceImpl implements ArbolService {
     private final ArbolRepository arbolRepository;
     private final ObjectMapper mapper;
-    @Override
-    public Arbol registrarArbol(Arbol arbol) {
+    public ArbolDTO nuevoArbol(ArbolDTO arbolDTO) {
+        // Convertir ArbolDTO a entidad Arbol
+        Arbol arbol = mapper.convertValue(arbolDTO, Arbol.class);
+
         // Verificar si ya existe un árbol con el mismo nombre científico
         Boolean arbolExiste = arbolRepository.existsByNombreCientifico(arbol.getNombreCientifico());
 
@@ -25,14 +27,15 @@ public class ArbolServiceImpl implements ArbolService {
             return null;
         } else {
 
-            Arbol arbolAGuardar = mapper.convertValue(arbol, Arbol.class);
+            Arbol arbolGuardado = arbolRepository.save(arbol);
 
-            Arbol arbolGuardado = arbolRepository.save(arbolAGuardar);
+            ArbolDTO arbolRegistrado = mapper.convertValue(arbolGuardado, ArbolDTO.class);
 
-
-            return arbolGuardado;
+            return arbolRegistrado;
         }
     }
+
+
 
     @Override
     public Arbol buscarArbolPorId(Long id) {

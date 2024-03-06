@@ -26,8 +26,6 @@ public class Arbol {
     @Max(value = 30)
     private String tipo;
 
-    private String imagen;
-
     private Double precio;
 
 

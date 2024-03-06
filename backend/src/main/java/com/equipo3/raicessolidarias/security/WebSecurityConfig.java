@@ -63,7 +63,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll() // Permite el acceso a rutas específicas sin autenticación
                         .requestMatchers("/usuario/todos").hasRole("ADMIN")
                         .requestMatchers("/usuario/actualizar").hasAnyRole("VOLUNTARIO", "ADMIN","DONANTE")
-                        .requestMatchers("/arbol/registrar").hasRole("ADMIN")
+                        .requestMatchers("/arbol/nuevo").permitAll()
                         .requestMatchers("/arbol/todos").hasAnyRole("VOLUNTARIO","DONANTE", "ADMIN")
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
