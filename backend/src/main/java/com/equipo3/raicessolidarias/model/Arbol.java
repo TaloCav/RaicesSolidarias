@@ -22,7 +22,7 @@ public class Arbol {
     @Max(value = 30)
     private String nombreCientifico;
 
-    @Column(name = "tipo", unique = true, nullable = false)
+    @Column(name = "tipo", nullable = false)
     @Max(value = 30)
     private String tipo;
 

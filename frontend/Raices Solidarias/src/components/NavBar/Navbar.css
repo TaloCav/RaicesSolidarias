@@ -1,7 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+header {
+  position: sticky;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0px;
+  z-index: 3;
 }
 
 .contenedor-nav {

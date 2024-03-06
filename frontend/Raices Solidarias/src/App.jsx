@@ -8,6 +8,7 @@ import Perfil from "./Pages/Perfil/PerfilUsuario";
 import Informacion from "./Pages/Informacion/Informacion";
 import QuienesSomos from "./Pages/QuienesSomos/Team";
 import Actividades from "./Pages/Actividades/Actividades";
+import Apadrinar from "./Pages/Apadrinar/Apadrinar";
 import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 
@@ -35,10 +36,11 @@ function App() {
   console.log(pathname);
   return (
     <>
-      <div className="lazyImg"></div>
-      <div className="container-principal">
-        <NavBar user={user} />
-        {myRuts() && user === null && <Login setUser={setUser} />}
+      {/* <div className="lazyImg"></div> */}
+      <div className="container-principal"></div>
+      <NavBar user={user} />
+      {myRuts() && user === null && <Login setUser={setUser} />}
+      <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/registro" element={<Register />}></Route>
@@ -46,9 +48,10 @@ function App() {
           <Route path="/informacion" element={<Informacion />}></Route>
           <Route path="/quienesSomos" element={<QuienesSomos />}></Route>
           <Route path="/actividades" element={<Actividades />}></Route>
+          <Route path="/apadrinar" element={<Apadrinar />}></Route>
         </Routes>
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }

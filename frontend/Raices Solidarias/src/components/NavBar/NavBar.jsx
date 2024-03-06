@@ -8,7 +8,7 @@ function NavBar({ user }) {
 
   return (
     <header>
-      <div className="contenedor-nav">
+      <nav className="contenedor-nav">
         <div className="nav-logo">
           <img className="logo" src={logo} alt="Raices Logo" />
         </div>
@@ -41,7 +41,7 @@ function NavBar({ user }) {
             <button className="btt-perfil-usuario">MI PERFIL</button>
           </Link>
         )}
-      </div>
+      </nav>
     </header>
   );
 }

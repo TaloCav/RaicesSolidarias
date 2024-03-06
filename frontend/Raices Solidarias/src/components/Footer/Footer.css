@@ -60,6 +60,10 @@
   text-decoration: none;
 }
 
+footer {
+  bottom: 0;
+}
+
 @media screen and (max-width: 400px) {
 }
 

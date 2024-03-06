@@ -64,7 +64,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/usuario/todos").hasRole("ADMIN")
                         .requestMatchers("/usuario/actualizar").hasAnyRole("VOLUNTARIO", "ADMIN","DONANTE")
                         .requestMatchers("/arbol/nuevo").permitAll()
-                        .requestMatchers("/arbol/todos").hasAnyRole("VOLUNTARIO","DONANTE", "ADMIN")
+                        .requestMatchers("/arbol/todos").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
         http.authenticationProvider(authenticationProvider()); // Agrega el proveedor de autenticación al objeto HttpSecurity
