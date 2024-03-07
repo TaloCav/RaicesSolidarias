@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ArbolDTO {
+    private Long id;
     private String nombreComun;
     private String nombreCientifico;
     private String tipo;

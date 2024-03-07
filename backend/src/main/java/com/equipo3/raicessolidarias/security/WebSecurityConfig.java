@@ -61,10 +61,13 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura la gestión de sesiones como sin estado
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll() // Permite el acceso a rutas específicas sin autenticación
-                        .requestMatchers("/usuario/todos").hasRole("ADMIN")
+                        .requestMatchers("/usuario/todos").permitAll()
                         .requestMatchers("/usuario/actualizar").hasAnyRole("VOLUNTARIO", "ADMIN","DONANTE")
                         .requestMatchers("/arbol/nuevo").permitAll()
+                        .requestMatchers("/usuario/{userId}/arboles/{arbolId}").permitAll()
                         .requestMatchers("/arbol/todos").permitAll()
+                        .requestMatchers("/usuario/{userId}/arboles").permitAll()
+                        .requestMatchers("/usuario/{userId}/numero-arboles").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
         http.authenticationProvider(authenticationProvider()); // Agrega el proveedor de autenticación al objeto HttpSecurity

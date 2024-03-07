@@ -1,6 +1,7 @@
 package com.equipo3.raicessolidarias.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
@@ -61,7 +62,7 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "actividad_id")
     )
     private Set<Actividad> actividades;
-
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "usuario_arbol",
@@ -69,6 +70,9 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "arbol_id")
     )
     private List<Arbol> arboles;
+    public void agregarArbol(Arbol arbol) {
+        arboles.add(arbol);
+    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "usuarios_roles",

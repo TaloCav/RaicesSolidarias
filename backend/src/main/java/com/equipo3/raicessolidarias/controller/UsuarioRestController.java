@@ -1,7 +1,10 @@
 package com.equipo3.raicessolidarias.controller;
 
+import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.dto.UsuarioDTO;
+import com.equipo3.raicessolidarias.model.Arbol;
 import com.equipo3.raicessolidarias.model.Usuario;
+import com.equipo3.raicessolidarias.repository.UsuarioRepository;
 import com.equipo3.raicessolidarias.service.UsuarioServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,7 @@ import java.util.*;
 @RequestMapping("/usuario")
 public class UsuarioRestController {
     private final UsuarioServiceImpl usuarioService;
+    private final UsuarioRepository usuarioRepository;
 
 
 
@@ -28,6 +32,42 @@ public class UsuarioRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    @PostMapping("/{userId}/arboles/{arbolId}")
+    public ResponseEntity<String> asignarArbolAUsuario(@PathVariable Long userId, @PathVariable Long arbolId) {
+        Usuario usuario = usuarioService.asignarArbolAUsuario(userId, arbolId);
+        if (usuario != null) {
+            return new ResponseEntity<>("El árbol fue asignado correctamente al usuario.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontró el usuario o el árbol.", HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/{userId}/arboles")
+    public List<ArbolDTO> obtenerArbolesDeUsuario(@PathVariable Long userId) {
+        Usuario usuario = usuarioRepository.findById(userId).orElse(null);
+
+        if (usuario != null) {
+            List<ArbolDTO> arbolesAsociados = new ArrayList<>();
+            for (Arbol arbol : usuario.getArboles()) {
+                ArbolDTO arbolDTO = new ArbolDTO();
+                arbolDTO.setId(arbol.getId());
+                arbolDTO.setNombreComun(arbol.getNombreComun());
+                arbolDTO.setNombreCientifico(arbol.getNombreCientifico());
+                arbolDTO.setTipo(arbol.getTipo());
+                arbolDTO.setPrecio(arbol.getPrecio());
+                arbolesAsociados.add(arbolDTO);
+            }
+            return arbolesAsociados;
+        } else {
+            return new ArrayList<>(); // Devuelve una lista vacía si el usuario no se encuentra
+        }
+    }
+
+    @GetMapping("/{userId}/numero-arboles")
+    public ResponseEntity<Integer> obtenerNumeroDeArbolesDeUsuario(@PathVariable Long userId) {
+        int numeroDeArboles = usuarioService.contarArbolesDeUsuario(userId);
+        return ResponseEntity.ok(numeroDeArboles);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long id) {
         Usuario usuarioBuscado = usuarioService.buscarUsuarioPorId(id);
