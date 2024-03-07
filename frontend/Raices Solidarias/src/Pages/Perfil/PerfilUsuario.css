@@ -1,13 +1,29 @@
+.logoRegistro {
+  height: 190px;
+}
+
+.contenedorLogoRegistro {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
 .container-perfil {
   display: flex;
   justify-content: center;
   background-color: rgba(42, 57, 17, 0.5);
   gap: 80px;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 10px;
   width: fit-content;
-  margin-left: 200px;
-  height: 630px;
+  margin-left: 100px;
+ 
+  padding: 40px; /* Ajusta el relleno para reducir el tamaño general */
+  margin: 0 auto; /* Centra horizontalmente */
+  margin-bottom: 10px;
+  margin-top: 50px;
+  max-width: 900px; /* Limita el ancho máximo para que no se desborde */
+  max-height: 400px;
 }
 
 .container-usuario {
@@ -17,25 +33,29 @@
   font-family: "Abhaya Libre";
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  letter-spacing: 10px;
+  font-size: 20px;
+  letter-spacing: 2px;
   color: #2a3911;
+  
 }
 
 .container-usuario h2 {
   font-family: "Glory";
   font-weight: 943;
   font-style: normal;
-  font-size: 35px;
+  font-size: 20px;
   line-height: 45px;
-  padding-bottom: 25px;
+  padding-bottom: 1px;
   text-align: center;
   color: #2a3911;
 }
 
 .container-usuario div p {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
+
 }
+
+
 
 .botones-container {
   display: flex;
@@ -53,14 +73,16 @@
   font-family: "Glory";
   font-style: normal;
   font-weight: 800;
-  font-size: 30px;
-  line-height: 45px;
-  width: 300px;
+  font-size: 18px;
+  line-height: 20px;
+  width: 180px;
 }
 
 .container-medio {
   display: flex;
   flex-direction: column;
+  padding-left: 300px;
+  
 }
 
 .container-medio a {
@@ -68,8 +90,8 @@
   color: #fcff7b;
   font-family: "Glory";
   font-weight: 800;
-  font-size: 20px;
-  padding-bottom: 25px;
+  font-size: 15px;
+  padding-bottom: 10px;
 }
 
 .arboles-container {
@@ -77,3 +99,14 @@
   height: 530px;
   padding: 30px;
 }
+@media (max-width: 768px) {
+  .container-perfil {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-medio {
+    padding-left: 0;
+  }
+}
+

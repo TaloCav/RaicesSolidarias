@@ -37,7 +37,7 @@ function NavBar({ user }) {
           </Link>
         )}
         {user && (
-          <Link to="/pefil">
+          <Link to="/perfil">
             <button className="btt-perfil-usuario">MI PERFIL</button>
           </Link>
         )}

@@ -39,7 +39,7 @@ function App() {
       {/* <div className="lazyImg"></div> */}
       <div className="container-principal"></div>
       <NavBar user={user} />
-      {myRuts() && user === null && <Login setUser={setUser} />}
+      {myRuts() && user === null && <Login setUser={setUser} />} 
       <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
