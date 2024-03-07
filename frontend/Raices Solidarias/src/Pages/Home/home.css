@@ -178,10 +178,13 @@
 
 /* Estilos para pantallas muy pequeñas, como smartphones en orientación vertical */
 @media screen and (max-width: 480px) {
-  .contenedor-Text1 p {
-    
+  .container-home2, .container-home3, .container-home4 {
+    justify-content: center;
+    text-align: center;
   }
-
+  .contenedor-TextosBlack {
+    margin-left: 0;
+  }
   .contenedor-Text2 h1 {
     font-size: 20px;
     line-height: 1.1; /
@@ -191,6 +194,9 @@
     justify-content: center;
     align-items: center;
   }
+  .tamañoImagen{
+    width: 400px!important;
+   }
 }
 
 @media screen and (max-width: 768px) {

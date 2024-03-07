@@ -1,9 +1,7 @@
-import React from "react";
 import "./Team.css";
 import ImagenTeam from "../../components/assets/ArbolesTeam.svg";
 import ImagenTeam2 from "../../components/assets/RastrilloTeam.svg";
 import ImagenTeam3 from "../../components/assets/BosqueTeam.svg";
-import BannerTeam from "../../components/assets/BANNER.jpg";
 import Participacion from "../../components/assets/Participacion.svg";
 import Compromiso from "../../components/assets/Compromiso.svg";
 import Responsabilidad from "../../components/assets/Responsabilidad.svg";
@@ -16,7 +14,7 @@ function Team() {
         <div className="container-team">
           <img className="tamañoImg-Team" src={ImagenTeam} alt="ImagenTeam1" />
           <div className="container-TextTeam">
-            <h2>Quienes somos</h2>
+            <h2>¿Quiénes somos?</h2>
             <p>
               En Raíces Solidarias, nos comprometemos fervientemente con la
               restauración de los bosques nativos en Chile. A través de nuestra
@@ -28,7 +26,7 @@ function Team() {
             </p>
           </div>
         </div>
-        <div className="container-team">
+        <div className="container-team2">
           <div className="container-TextTeam">
             <h2>Misión</h2>
             <p>
@@ -71,7 +69,7 @@ function Team() {
                 src={Participacion}
                 alt="Nuestros-Valores-Img"
               />
-              <h2>Participacion</h2>
+              <h2>Participación</h2>
             </div>
             <div className="container-imgText">
               <img

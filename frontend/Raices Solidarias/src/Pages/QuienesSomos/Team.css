@@ -1,17 +1,21 @@
-.container-team {
+.container-team, .container-team2 {
   display: flex;
   background-color: #fcff7b;
   width: 100%;
+  height: fit-content;
   justify-content: space-evenly;
   align-items: center;
+  padding-bottom: 50px;
+  text-align: justify;
 }
 
 .container-TextTeam {
-  margin: 1%;
+  display: flex;
+  flex-direction: column;
   /* background-color: blue; */
   width: 600px;
-  height: 200px;
-
+  height: fit-content;
+  gap: 30px;
   font-style: normal;
   font-weight: 50px;
   font-size: 20px;
@@ -19,7 +23,7 @@
 }
 
 .tamañoImg-Team {
-  height: 400px;
+  height: 350px;
 }
 
 .banner-Team {
@@ -31,21 +35,17 @@
 }
 
 .container-imgTeam {
+  display: flex;
+  justify-content: space-evenly;
   background-color: #fcff7b;
   width: 100%;
   height: 300px;
+  padding-bottom: 50px;
 }
 
 .tamaño-nuestrosValores {
   height: 240px;
   width: 300px;
-}
-
-.container-imgTeam {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  height: 300px;
 }
 
 .container-team-nuestrosValores {
@@ -71,4 +71,34 @@
 
 .tamaño-responsabilidad {
   width: 240px;
+}
+
+@media (width < 1300px) {
+
+  .container-TextTeam {
+    width: fit-content;
+    padding: 20px;
+  }
+
+  .tamañoImg-Team {
+    height: 300px;
+  }
+
+  .container-imgTeam {
+    flex-wrap: wrap;
+    height: fit-content;
+  }
+}
+
+@media (width < 830px) {
+
+  .container-team,.container-team2 {
+    flex-wrap: wrap;
+    padding: 30px;
+  }
+
+  .container-team2 {
+    flex-direction: column-reverse;
+  }
+
 }
