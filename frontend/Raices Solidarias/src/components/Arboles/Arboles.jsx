@@ -5,9 +5,15 @@ import axios from "axios";
 
 function Arboles() {
   const [data, setData] = useState([]);
+  const [emailUsuario, setEmailUsuario] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8080/usuario/1/arboles")
+    // Obtener el email del usuario almacenado en localStorage
+    const emailUsuarioStorage = JSON.parse(localStorage.getItem("user")).email;
+    setEmailUsuario(emailUsuarioStorage);
+
+    // Obtener los árboles asociados al usuario con el email obtenido
+    axios.get(`http://localhost:8080/usuario/${emailUsuarioStorage}/arboles`)
       .then((response) => {
         setData(response.data);
       })
@@ -31,6 +37,7 @@ function Arboles() {
             </div>
           </div>
         ))}
+
       </div>
     </>
   );

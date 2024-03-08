@@ -6,26 +6,36 @@ import axios from "axios";
 import "./PerfilUsuario.css";
 
 function PerfilUsuario() {
-  const [primerUsuario, setPrimerUsuario] = useState(null);
+  const [usuario, setUsuario] = useState(null);
   const [numeroArboles, setNumeroArboles] = useState(0);
+  const [roles, setRoles] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/usuario/todos")
-      .then(response => {
-      
-        if (response.data.length > 0) {
-      
-          setPrimerUsuario(response.data[0]);
 
-          // Obtener el número de árboles asociados al usuario con id 1
-          axios.get("http://localhost:8080/usuario/1/numero-arboles")
-            .then(response => {
-              setNumeroArboles(response.data);
-            })
-            .catch(error => {
-              console.error("Error al obtener el número de árboles del usuario:", error);
-            });
-        }
+    const emailUsuario = JSON.parse(localStorage.getItem("user")).email;
+
+
+    axios.get(`http://localhost:8080/usuario/${emailUsuario}/atributos`)
+      .then(response => {
+        setUsuario(response.data[0]); // Acceder al primer elemento de la lista
+
+    
+        axios.get(`http://localhost:8080/usuario/${emailUsuario}/numero-arboles`)
+          .then(response => {
+            setNumeroArboles(response.data);
+          })
+          .catch(error => {
+            console.error("Error al obtener el número de árboles del usuario:", error);
+          });
+
+        // Obtener los roles del usuario con el email obtenido
+        axios.get(`http://localhost:8080/usuario/${emailUsuario}/roles`)
+          .then(response => {
+            setRoles(response.data);
+          })
+          .catch(error => {
+            console.error("Error al obtener los roles del usuario:", error);
+          });
       })
       .catch(error => {
         console.error("Error al obtener los datos del usuario:", error);
@@ -33,7 +43,6 @@ function PerfilUsuario() {
   }, []);
 
   const obtenerRolesComoTexto = (roles) => {
-  
     if (roles && Array.isArray(roles)) {
       const rolesSinPrefijo = roles.map(role => role.nombre.replace('ROLE_', ''));
       return rolesSinPrefijo.join(", ");
@@ -49,12 +58,12 @@ function PerfilUsuario() {
           <Link to="/otra-ruta">&#8592; VOLVER</Link>
           <div className="container-usuario">
             <h2>PERFIL DEL USUARIO</h2>
-            {primerUsuario && (
+            {usuario && (
               <div>
-                <p><strong>Nombre:</strong> {primerUsuario.nombre}</p>
-                <p><strong>Apellido:</strong> {primerUsuario.apellido}</p>
-                <p><strong>Fecha de Nacimiento:</strong> {primerUsuario.fechaDeNacimiento}</p>
-                <p><strong>Roles:</strong> {obtenerRolesComoTexto(primerUsuario.roles)}</p>
+                <p><strong>Nombre:</strong> {usuario[0]}</p> 
+                <p><strong>Apellido:</strong> {usuario[1]}</p> 
+                <p><strong>Fecha de Nacimiento:</strong> {usuario[2]}</p> 
+                <p><strong>Roles:</strong> {obtenerRolesComoTexto(roles)}</p>
                 <p><strong>Número de Árboles:</strong> {numeroArboles}</p>
               </div>
             )}

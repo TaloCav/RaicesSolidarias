@@ -5,13 +5,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Login({ setUser }) {
-  const [ruta, setRute] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e);
     axios
       .post("http://localhost:8080/api/auth/login", {
         email: email,
@@ -19,10 +17,12 @@ function Login({ setUser }) {
       })
       .then((resp) => {
         setUser(resp.data);
-        localStorage.setItem("user", JSON.stringify(resp.data));
+        // Almacena solo el correo electrónico en localStorage
+        localStorage.setItem("user", JSON.stringify({ email: email }));
       })
       .catch((error) => setUser(resp.data));
   };
+
   return (
     <>
       <div className="contenedor-hiddenNavbar">
@@ -46,7 +46,7 @@ function Login({ setUser }) {
                 type="text"
                 className="input"
                 id="email-login"
-                placeholder="a"
+                placeholder="Correo electrónico"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -57,10 +57,10 @@ function Login({ setUser }) {
 
             <div className="inputContainerLogin">
               <input
-                type="text"
+                type="password"
                 className="input"
                 id="contraseña-login"
-                placeholder="a"
+                placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -71,7 +71,7 @@ function Login({ setUser }) {
             <input type="submit" className="submitBtn" value="Conectarme" />
             <p className="text-login">¿No tienes cuenta? </p>
             <p className="text-login2">
-              <Link to="/registro">Registrate aqui.</Link>
+              <Link to="/registro">Regístrate aquí.</Link>
             </p>
           </form>
         </div>
@@ -79,4 +79,5 @@ function Login({ setUser }) {
     </>
   );
 }
+
 export default Login;

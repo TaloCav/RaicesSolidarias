@@ -3,6 +3,7 @@ package com.equipo3.raicessolidarias.service;
 import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.dto.UsuarioDTO;
 import com.equipo3.raicessolidarias.model.Arbol;
+import com.equipo3.raicessolidarias.model.Rol;
 import com.equipo3.raicessolidarias.model.Usuario;
 
 import java.util.List;
@@ -23,11 +24,15 @@ public interface UsuarioService {
 
     Boolean existeUsuarioPorEmail(String email);
 
-    Usuario asignarArbolAUsuario(Long userId, Long arbolId);
+    Usuario asignarArbolAUsuario(String email, Long arbolId);
 
-    List<Arbol> obtenerArbolesDeUsuario(Long userId);
+    List<Arbol> obtenerArbolesAsociados(String email);
 
-    int contarArbolesDeUsuario(Long userId);
+    int contarArbolesDeUsuario(String email);
+
+    List<Object[]> getAttributesByEmail(String email);
+
+    List<Rol> getRolesByEmail(String email);
 
 
 

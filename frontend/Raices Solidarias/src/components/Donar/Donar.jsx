@@ -2,20 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./Donar.css";
 import imgDonar from "../../components/assets/deciduous-tree.svg";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function Donar() {
   const [data, setData] = useState([]);
+  const [userEmail, setUserEmail] = useState(""); // Estado para almacenar el email del usuario
 
   useEffect(() => {
     axios.get("http://localhost:8080/arbol/todos").then((response) => {
       setData(response.data);
     });
+    
+    // Obtener el correo electrónico del usuario del almacenamiento local (localStorage)
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setUserEmail(userData.email);
+    }
   }, []);
+
   const dataDonacion = data.slice(0, 20);
 
-  const handleDonarClick = () => {
-    window.location.href = "https://www.mercadopago.cl/"; // Reemplaza con la URL de Mercado Pago
+  const handleDonarClick = (arbolId) => {
+    // Enviar una solicitud HTTP al backend con el email del usuario y el ID del árbol
+    axios.post("http://localhost:8080/usuario/asignar-arbol", { email: userEmail, arbolId })
+      .then((response) => {
+        console.log("Arbol asignado correctamente:", response.data);
+        // Aquí puedes manejar la respuesta del backend, si es necesario
+      })
+      .catch((error) => {
+        console.error("Error al asignar el árbol:", error);
+        // Aquí puedes manejar los errores de la solicitud HTTP, si es necesario
+      });
   };
 
   return (
@@ -33,7 +50,8 @@ function Donar() {
                   <p>Tipo : {item.tipo}</p>
                   <p>Precio : {item.precio}</p>
                 </div>
-                <button className="donar-button" onClick={handleDonarClick}>
+                {/* Pasar el ID del árbol al hacer clic en el botón */}
+                <button className="donar-button" onClick={() => handleDonarClick(item.id)}>
                   APADRINAR CON MERCADO PAGO
                 </button>
               </div>

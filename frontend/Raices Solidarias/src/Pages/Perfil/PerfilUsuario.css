@@ -1,13 +1,3 @@
-.logoRegistro {
-  height: 190px;
-}
-
-.contenedorLogoRegistro {
-  display: flex;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-}
 .container-perfil {
   display: flex;
   justify-content: center;
@@ -98,6 +88,7 @@
   margin-top: 1px;
   height: 530px;
   padding: 30px;
+  
 }
 @media (max-width: 768px) {
   .container-perfil {

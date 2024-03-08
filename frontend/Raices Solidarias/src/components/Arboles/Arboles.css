@@ -1,54 +1,59 @@
 .container-arbol {
- height: 630px;
-  width: 500px;
-
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 20px;
+  height: 630px;
+   width: 500px;
  
-  font-size: 18px;
-  max-height: 200px; 
-  
-  
-}
-.container-arbol p{
-  justify-content: center;
-  padding-top: 10px;
-  font-family: "Abhaya Libre";
-  font-weight: 600;
-  color: #FCFF7B;
-  font-size: 20px;
-  
-  
-}
-
-.container-arbol h2 {
-  color: aliceblue;
-  font-size: 35px;
-  font-family: "Glory";
-  color: #FCFF7B;
-  padding-top: 40px;
-
-
-
-}
-
-
-.container-arbol > .card {
-  display: flex;
-  height: 100px;
-  width: 400px;
-  box-sizing: border-box;
-  box-sizing: border-box;
-  overflow-wrap: normal;
  
-
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   gap: 20px;
   
-}
-
-.container-arbol > .card img {
-  height: 60px;
-}
-
+   font-size: 18px;
+   max-height: 200px; 
+  
+   
+   
+ }
+ .container-arbol p{
+   justify-content: center;
+   padding-top: 10px;
+   font-family: "Abhaya Libre";
+   font-weight: 600;
+   color: #FCFF7B;
+   font-size: 20px;
+   
+   
+ }
+ 
+ .container-arbol h2 {
+   color: aliceblue;
+   font-size: 35px;
+   font-family: "Glory";
+   color: #FCFF7B;
+   padding-top: 40px;
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+ .container-arbol > .card {
+   display: flex;
+   height: 100px;
+   width: 400px;
+   box-sizing: border-box;
+   box-sizing: border-box;
+   overflow-wrap: normal;
+   
+  
+ 
+   
+ }
+ 
+ .container-arbol > .card img {
+   height: 60px;
+ }
+ 
+ 
+ 

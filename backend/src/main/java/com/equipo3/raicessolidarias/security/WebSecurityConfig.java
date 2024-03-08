@@ -64,10 +64,12 @@ public class WebSecurityConfig {
                         .requestMatchers("/usuario/todos").permitAll()
                         .requestMatchers("/usuario/actualizar").hasAnyRole("VOLUNTARIO", "ADMIN","DONANTE")
                         .requestMatchers("/arbol/nuevo").permitAll()
-                        .requestMatchers("/usuario/{userId}/arboles/{arbolId}").permitAll()
+                        .requestMatchers("/usuario/asignar-arbol").permitAll()
                         .requestMatchers("/arbol/todos").permitAll()
-                        .requestMatchers("/usuario/{userId}/arboles").permitAll()
-                        .requestMatchers("/usuario/{userId}/numero-arboles").permitAll()
+                        .requestMatchers("/usuario/{email}/arboles").permitAll()
+                        .requestMatchers("/usuario/{email}/numero-arboles").permitAll()
+                        .requestMatchers("usuario/{email}/atributos").permitAll()
+                        .requestMatchers("usuario/{email}/roles").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
         http.authenticationProvider(authenticationProvider()); // Agrega el proveedor de autenticación al objeto HttpSecurity

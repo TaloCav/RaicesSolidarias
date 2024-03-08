@@ -3,6 +3,7 @@ package com.equipo3.raicessolidarias.service;
 import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.dto.UsuarioDTO;
 import com.equipo3.raicessolidarias.model.Arbol;
+import com.equipo3.raicessolidarias.model.Rol;
 import com.equipo3.raicessolidarias.model.Usuario;
 import com.equipo3.raicessolidarias.repository.ArbolRepository;
 import com.equipo3.raicessolidarias.repository.UsuarioRepository;
@@ -12,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -41,8 +43,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
-    public Usuario asignarArbolAUsuario(Long userId, Long arbolId) {
-        Usuario usuario = usuarioRepository.findById(userId).orElse(null);
+    public Usuario asignarArbolAUsuario(String email, Long arbolId) {
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
         Arbol arbol = arbolRepository.findById(arbolId).orElse(null);
 
         if (usuario != null && arbol != null) {
@@ -55,24 +57,22 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
-    public List<Arbol> obtenerArbolesDeUsuario(Long userId) {
-        Usuario usuario = usuarioRepository.findById(userId).orElse(null);
-
+    public List<Arbol> obtenerArbolesAsociados(String email) {
+        Usuario usuario = usuarioRepository.findUsuarioByEmail(email);
         if (usuario != null) {
-            List<Arbol> arbolesAsociados = new ArrayList<>();
-            for (Arbol arbol : usuario.getArboles()) {
-                if (arbol.getUsuarios().contains(usuario)) {
-                    arbolesAsociados.add(arbol);
-                }
-            }
-            return arbolesAsociados;
+            // Filtrar los árboles asociados al usuario
+            return usuario.getArboles().stream()
+                    .filter(arbol -> arbol.getUsuarios().contains(usuario))
+                    .collect(Collectors.toList());
         } else {
-            return new ArrayList<>(); // Devuelve una lista vacía si el usuario no se encuentra
+            return List.of(); // Devolver una lista vacía si el usuario no existe
         }
     }
 
-    public int contarArbolesDeUsuario(Long userId) {
-        Usuario usuario = usuarioRepository.findById(userId).orElse(null);
+
+
+    public int contarArbolesDeUsuario(String email) {
+        Usuario usuario = usuarioRepository.findUsuarioByEmail(email);
 
         if (usuario != null) {
             return usuario.getArboles().size(); // Devuelve el tamaño de la lista de árboles asociados al usuario
@@ -115,6 +115,29 @@ public class UsuarioServiceImpl implements UsuarioService {
             return mapper.convertValue(usuarioActualizado, UsuarioDTO.class);
         } else {
             return null;
+        }
+    }
+    @Override
+    public List<Object[]> getAttributesByEmail(String email) {
+        return usuarioRepository.findAttributesByEmail(email);
+    }
+    public List<Rol> getRolesByEmail(String email) {
+        // Buscar el usuario por su email
+        Usuario usuario = usuarioRepository.findUsuarioByEmail(email);
+
+        // Verificar si el usuario existe y tiene roles asociados
+        if (usuario != null && usuario.getRoles() != null && !usuario.getRoles().isEmpty()) {
+            // Crear una lista para almacenar los roles del usuario
+            List<Rol> roles = new ArrayList<>();
+
+            // Iterar sobre los roles del usuario y agregarlos a la lista
+            for (Rol rol : usuario.getRoles()) {
+                roles.add(rol);
+            }
+
+            return roles; // Devolver la lista de roles
+        } else {
+            return new ArrayList<>(); // Devolver una lista vacía si el usuario no tiene roles o no existe
         }
     }
 

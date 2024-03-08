@@ -3,6 +3,7 @@ package com.equipo3.raicessolidarias.controller;
 import com.equipo3.raicessolidarias.dto.ArbolDTO;
 import com.equipo3.raicessolidarias.dto.UsuarioDTO;
 import com.equipo3.raicessolidarias.model.Arbol;
+import com.equipo3.raicessolidarias.model.Rol;
 import com.equipo3.raicessolidarias.model.Usuario;
 import com.equipo3.raicessolidarias.repository.UsuarioRepository;
 import com.equipo3.raicessolidarias.service.UsuarioServiceImpl;
@@ -32,18 +33,21 @@ public class UsuarioRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    @PostMapping("/{userId}/arboles/{arbolId}")
-    public ResponseEntity<String> asignarArbolAUsuario(@PathVariable Long userId, @PathVariable Long arbolId) {
-        Usuario usuario = usuarioService.asignarArbolAUsuario(userId, arbolId);
+    @PostMapping("/asignar-arbol")
+    public ResponseEntity<String> asignarArbolAUsuario(@RequestBody Map<String, Object> request) {
+        String email = (String) request.get("email");
+        Long arbolId = Long.valueOf(request.get("arbolId").toString());
+
+        Usuario usuario = usuarioService.asignarArbolAUsuario(email, arbolId);
         if (usuario != null) {
-            return new ResponseEntity<>("El árbol fue asignado correctamente al usuario.", HttpStatus.OK);
+            return ResponseEntity.ok("El árbol fue asignado correctamente al usuario con email: " + email);
         } else {
-            return new ResponseEntity<>("No se encontró el usuario o el árbol.", HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/{userId}/arboles")
-    public List<ArbolDTO> obtenerArbolesDeUsuario(@PathVariable Long userId) {
-        Usuario usuario = usuarioRepository.findById(userId).orElse(null);
+    @GetMapping("/{email}/arboles")
+    public List<ArbolDTO> obtenerArbolesDeUsuario(@PathVariable String email) {
+        Usuario usuario = usuarioRepository.findUsuarioByEmail(email);
 
         if (usuario != null) {
             List<ArbolDTO> arbolesAsociados = new ArrayList<>();
@@ -62,10 +66,18 @@ public class UsuarioRestController {
         }
     }
 
-    @GetMapping("/{userId}/numero-arboles")
-    public ResponseEntity<Integer> obtenerNumeroDeArbolesDeUsuario(@PathVariable Long userId) {
-        int numeroDeArboles = usuarioService.contarArbolesDeUsuario(userId);
-        return ResponseEntity.ok(numeroDeArboles);
+    @GetMapping("/{email}/numero-arboles")
+    public int contarArbolesDeUsuario(@PathVariable String email) {
+        return usuarioService.contarArbolesDeUsuario(email);
+    }
+
+    @GetMapping("/{email}/atributos")
+    public List<Object[]> getAttributesByEmail(@PathVariable String email) {
+        return usuarioService.getAttributesByEmail(email);
+    }
+    @GetMapping("/{email}/roles")
+    public List<Rol> getRolesByEmail(@PathVariable String email) {
+        return usuarioService.getRolesByEmail(email);
     }
 
     @GetMapping("/{id}")
