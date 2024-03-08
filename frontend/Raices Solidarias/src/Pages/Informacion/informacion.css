@@ -148,6 +148,13 @@ button {
   left: 60%;
   top: 20%;
 }
+.text-info{
+  padding: 30px;
+  color: black;
+  font-family: "Abhaya Libre";
+  font-style: normal;
+  font-weight: 500;
+}
 
 /* responsive */
 

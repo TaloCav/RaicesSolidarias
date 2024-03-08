@@ -72,13 +72,7 @@ function Home() {
           <section id="nuestrasActividadesHref">
             <h2 id="#3">Nuestras Actividades</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Las actividades de siembra de Raices Solidarias para la reforestación de Chile son esenciales para restaurar los bosques degradados y proteger la biodiversidad. Se busca recuperar los ecosistemas y promover la resiliencia frente al cambio climático. Estas acciones no solo contribuyen a la conservación del medio ambiente, sino que también generan oportunidades para la participación comunitaria, la educación ambiental y el desarrollo socioeconómico sostenible en todo el país
             </p>
           </section>
           <a className="textHref" href="/actividades">

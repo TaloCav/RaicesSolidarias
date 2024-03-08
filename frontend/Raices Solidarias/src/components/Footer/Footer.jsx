@@ -16,19 +16,19 @@ function Footer() {
             <h2 className="titulo-footer">Infórmate</h2>
             <ul className="nav-footer">
               <Link className="linkFooter" to="/informacion">
-                <li>Tema1</li>
+                <li>Deforestación</li>
               </Link>
               <Link className="linkFooter" to="/informacion">
-                <li>Tema2</li>
+                <li>Tala Ilegal</li>
               </Link>
               <Link className="linkFooter" to="/informacion">
-                <li>Tema3</li>
+                <li>Árboles nativos de Chile</li>
               </Link>
               <Link className="linkFooter" to="/informacion">
-                <li>Tema4</li>
+                <li>Plantación de árboles</li>
               </Link>
               <Link className="linkFooter" to="/informacion">
-                <li>Tema5</li>
+                <li>Manejo sostenible</li>
               </Link>
             </ul>
           </div>

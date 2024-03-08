@@ -70,6 +70,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/usuario/{email}/numero-arboles").permitAll()
                         .requestMatchers("usuario/{email}/atributos").permitAll()
                         .requestMatchers("usuario/{email}/roles").permitAll()
+                        .requestMatchers("/actividad/todos").permitAll()
+                        .requestMatchers("/actividad/registrar").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
         http.authenticationProvider(authenticationProvider()); // Agrega el proveedor de autenticación al objeto HttpSecurity
